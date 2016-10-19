@@ -30,7 +30,7 @@ def WordCloudSquere(txt):
 		background_color="black", 
 		margin=5, width=1600, height=900) 
 	wordcloud = wordcloud.generate(txt)
-	wordcloud.to_file('./output/Squere.jpg')
+	wordcloud.to_file('./output/Squere(all).jpg')
 	# plt.imshow(wordcloud)
 	# plt.axis("off")
 	# plt.show()
@@ -43,7 +43,7 @@ def WordCloudPlot(txt):
 		background_color="black",   
 		margin=5, width=1600, height=900,mask=Mask,max_words=100,max_font_size=500,random_state=200) 
 	wordcloud = wordcloud.generate(txt)
-	wordcloud.to_file('./output/Mask.jpg')
+	wordcloud.to_file('./output/Mask(all).jpg')
 	# plt.imshow(wordcloud)
 	# plt.axis("off")
 	# plt.show()
@@ -52,7 +52,7 @@ def main():
 	reload(sys)
 	sys.setdefaultencoding( "utf-8" )
 	wordList = []
-	file = open(r'./input/xiedu.txt' , 'r').read()
+	file = open(r'./input/xiedu(all).txt' , 'r').read()
 	words = list(jieba.cut(file))
 	for word in words:
 		if len(word) > 1:
