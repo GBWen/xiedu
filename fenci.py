@@ -70,8 +70,8 @@ def main():
 	for w in words:
 		if w.flag == "n":
 			wordList.append(w.word)
-		if w.flag == "v":
-			wordList.append(w.word)
+		# if w.flag == "v":
+		# 	wordList.append(w.word)
 	# print wordList
 	WordCount(wordList)
 	txt = r' '.join(wordList)

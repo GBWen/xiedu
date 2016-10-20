@@ -23,3 +23,13 @@ WordCloudSquere 输出词云
 ![enter image description here](http://oa4pac8sx.bkt.clouddn.com/Squere.jpg)
 WordCloudPlot 以图片位模板输出
 ![enter image description here](http://oa4pac8sx.bkt.clouddn.com/Mask.jpg)
+
+10.20
+---
+但是仅仅这样存在一些问题，很多没有用的词占了很大部分：
+![enter image description here](http://oa4pac8sx.bkt.clouddn.com/2016-10-20%2010:11:02%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+所以词性做一下筛选，使用jieba.posseg，第一次去掉很多词性，发现还是有很多不科学的东东，然后保留名词动词，会，说。。。很多也应该去掉，最后干脆只保留名词，效果还不错。
+![enter image description here](http://oa4pac8sx.bkt.clouddn.com/2016-10-20%2010:13:48%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+![enter image description here](http://oa4pac8sx.bkt.clouddn.com/Squere2.jpg)
+![enter image description here](http://oa4pac8sx.bkt.clouddn.com/Mask2.jpg)
+
