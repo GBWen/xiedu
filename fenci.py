@@ -7,13 +7,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 import sys
+import jieba.posseg as pseg
 
 def  WordCount(wordList):
 	wordDict = {}
 	wordSet = set(wordList)
 	for word in wordSet:
 		wordDict[word] = wordList.count(word)
-	del wordDict["\r\n"]
+	# del wordDict["\r\n"]
 	wordDict = sorted(wordDict.iteritems(), key=lambda d:d[1], reverse = True)
 	#print wordDict
 	file = open('./output/WordCount.txt','w')
@@ -30,7 +31,7 @@ def WordCloudSquere(txt):
 		background_color="black", 
 		margin=5, width=1600, height=900) 
 	wordcloud = wordcloud.generate(txt)
-	wordcloud.to_file('./output/Squere(all).jpg')
+	wordcloud.to_file('./output/Squere.jpg')
 	# plt.imshow(wordcloud)
 	# plt.axis("off")
 	# plt.show()
@@ -43,7 +44,7 @@ def WordCloudPlot(txt):
 		background_color="black",   
 		margin=5, width=1600, height=900,mask=Mask,max_words=100,max_font_size=500,random_state=200) 
 	wordcloud = wordcloud.generate(txt)
-	wordcloud.to_file('./output/Mask(all).jpg')
+	wordcloud.to_file('./output/Mask.jpg')
 	# plt.imshow(wordcloud)
 	# plt.axis("off")
 	# plt.show()
@@ -52,11 +53,26 @@ def main():
 	reload(sys)
 	sys.setdefaultencoding( "utf-8" )
 	wordList = []
-	file = open(r'./input/xiedu(all).txt' , 'r').read()
-	words = list(jieba.cut(file))
-	for word in words:
-		if len(word) > 1:
-			wordList.append(word)
+	file = open(r'./input/xiedu.txt' , 'r').read()
+	words = list(pseg.cut(file))
+	cixing=["x","zg","uj","ul","e","d","uz","y","r","m"]
+	# for w in words:
+	# 	print("%s %s" %(w.word, w.flag))
+	# for w in words:
+	# 	f = 1;
+	# 	for ci in cixing:
+	# 		if w.flag == ci:
+	# 			f = 0;
+	# 			break;
+	# 	if f == 1:
+	# 		print("%s %s" %(w.word, w.flag))
+	# 		wordList.append(w.word)
+	for w in words:
+		if w.flag == "n":
+			wordList.append(w.word)
+		if w.flag == "v":
+			wordList.append(w.word)
+	# print wordList
 	WordCount(wordList)
 	txt = r' '.join(wordList)
 	#print wordList
